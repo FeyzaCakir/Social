@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Hoş Geldin 👋</h1>
+    <button id="logout-btn">Çıkış Yap</button>
+  </header>
+
+  <div id="postContainer"></div>
+
+
+  <main>
+    <!-- Gönderi ekleme formu -->
+    <section id="create-post">
+      <h2>Yeni Gönderi Paylaş</h2>
+      <form id="post-form" enctype="multipart/form-data">
+        <input type="text" id="title" placeholder="Başlık" required>
+        <textarea id="content" placeholder="İçerik" required></textarea>
+        <input type="file" id="media_file" accept="image/*,video/*" placeholder="Fotoğraf/Video URL">
+        <button type="submit">Paylaş</button>
+      </form>
+    </section>
+
+    <!-- Gönderi listesi -->
+    <section id="posts-section">
+      <h2>Gönderiler</h2>
+      <div id="post-container"></div>
+    </section>
+  </main>
+
+  <!-- 1) Token yoksa login’e yönlendirme -->
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/login.html";
+    }
+  </script>
+
+  <script src="/static/js/dashboard.js"></script>
+
+</body>
+</html>
